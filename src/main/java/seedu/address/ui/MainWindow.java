@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -43,7 +44,16 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane vendorListPanelPlaceholder;
+    private SplitPane multiViewSplitPane;
+
+    @FXML
+    private StackPane vendorSplitListPanelPlaceholder;
+
+    @FXML
+    private StackPane eventSplitListPanelPlaceholder;
+
+    @FXML
+    private StackPane singleListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -114,7 +124,10 @@ public class MainWindow extends UiPart<Stage> {
         vendorListPanel = new VendorListPanel(logic.getFilteredVendorList());
         eventListPanel = new EventListPanel(logic.getFilteredEventList());
 
-        vendorListPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
+        // default multiview
+        vendorSplitListPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
+        eventSplitListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
+        // multiViewSplitPane.setVisible(true);
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -130,16 +143,18 @@ public class MainWindow extends UiPart<Stage> {
      * Replace current listPanePlaceholder with eventListPanePlaceholder.
      */
     void showEventListPanel() {
-        vendorListPanelPlaceholder.getChildren().clear();
-        vendorListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
+        vendorSplitListPanelPlaceholder.getChildren().clear();
+        eventSplitListPanelPlaceholder.getChildren().clear();
+        singleListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
     }
 
     /**
      * Replace current listPanePlaceholder with vendorListPanePlaceholder.
      */
     void showVendorListPanel() {
-        vendorListPanelPlaceholder.getChildren().clear();
-        vendorListPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
+        vendorSplitListPanelPlaceholder.getChildren().clear();
+        eventSplitListPanelPlaceholder.getChildren().clear();
+        singleListPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
     }
 
     /**
@@ -204,8 +219,6 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isExit()) {
                 handleExit();
             }
-
-            if (commandResult.)
 
             return commandResult;
         } catch (CommandException | ParseException e) {

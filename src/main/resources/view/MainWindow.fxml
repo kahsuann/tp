@@ -46,12 +46,17 @@
           </padding>
         </StackPane>
 
-        <VBox fx:id="vendorList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+        <VBox fx:id="singleList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
           </padding>
-          <StackPane fx:id="vendorListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          <StackPane fx:id="singleListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
+
+        <SplitPane fx:id="multiViewSplitPlane" dividerPositions="0.5">
+          <StackPane fx:id="vendorSplitListPanelPlaceholder" />
+          <StackPane fx:id="eventSplitListPanelPlaceholder" />
+        </SplitPane>
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
