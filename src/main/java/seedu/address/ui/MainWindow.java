@@ -32,6 +32,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private VendorListPanel vendorListPanel;
+    private EventListPanel eventListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -111,6 +112,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         vendorListPanel = new VendorListPanel(logic.getFilteredVendorList());
+        eventListPanel = new EventListPanel(logic.getFilteredEventList());
+
         vendorListPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -121,6 +124,22 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    }
+
+    /**
+     * Replace current listPanePlaceholder with eventListPanePlaceholder.
+     */
+    void showEventListPanel() {
+        vendorListPanelPlaceholder.getChildren().clear();
+        vendorListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
+    }
+
+    /**
+     * Replace current listPanePlaceholder with vendorListPanePlaceholder.
+     */
+    void showVendorListPanel() {
+        vendorListPanelPlaceholder.getChildren().clear();
+        vendorListPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
     }
 
     /**
@@ -185,6 +204,8 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isExit()) {
                 handleExit();
             }
+
+            if (commandResult.)
 
             return commandResult;
         } catch (CommandException | ParseException e) {
