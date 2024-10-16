@@ -212,8 +212,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     void setVendorList() {
         singleView();
-        panelsHolder.getChildren().clear();
-        panelsHolder.getChildren().add(vendorListPanel.getRoot());
+        leftPanelPlaceholder.getChildren().clear();
+        leftPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
     }
 
     /**
@@ -221,8 +221,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     void setEventList() {
         singleView();
-        panelsHolder.getChildren().clear();
-        panelsHolder.getChildren().add(eventListPanel.getRoot());
+        leftPanelPlaceholder.getChildren().clear();
+        leftPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
     }
 
     /**
