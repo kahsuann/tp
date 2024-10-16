@@ -33,8 +33,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private VendorListPanel vendorListPanel;
-    // TODO: Update once eventListPanel is implemented
-    private VendorListPanel eventListPanel;
+    private EventListPanel eventListPanel;
     private VendorDetailsPanel vendorDetailsPanel;
     private EventDetailsPanel eventDetailsPanel;
     private ResultDisplay resultDisplay;
@@ -140,8 +139,7 @@ public class MainWindow extends UiPart<Stage> {
         vendorListPanel = new VendorListPanel(logic.getFilteredVendorList(), "Vendors List");
         leftPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
 
-        // TODO: Update once eventListPanel is created
-        eventListPanel = new VendorListPanel(logic.getFilteredVendorList(), "Events List");
+        eventListPanel = new EventListPanel(logic.getFilteredEventList(), "Events List");
         rightPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -202,7 +200,7 @@ public class MainWindow extends UiPart<Stage> {
         leftPanelPlaceholder.getChildren().clear();
 
         // TODO: Update once eventListPanel is created
-        leftPanelPlaceholder.getChildren().add(vendorListPanel.getRoot());
+        leftPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
     }
 
     /**
