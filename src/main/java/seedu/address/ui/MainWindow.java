@@ -88,6 +88,12 @@ public class MainWindow extends UiPart<Stage> {
             case EVENT_DETAILS:
                 setEventDetailsView();
                 break;
+            case VENDOR_LIST:
+                setVendorList();
+                break;
+            case EVENT_LIST:
+                setEventList();
+                break;
             default:
                 singleView();
                 break;
@@ -198,9 +204,25 @@ public class MainWindow extends UiPart<Stage> {
         rightPanelPlaceholder.getChildren().clear();
         rightPanelPlaceholder.getChildren().add(eventDetailsPanel.getRoot());
         leftPanelPlaceholder.getChildren().clear();
-
-        // TODO: Update once eventListPanel is created
         leftPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
+    }
+
+    /**
+     * Set main window to display vendor list.
+     */
+    void setVendorList() {
+        singleView();
+        panelsHolder.getChildren().clear();
+        panelsHolder.getChildren().add(vendorListPanel.getRoot());
+    }
+
+    /**
+     * Set main window to display event list.
+     */
+    void setEventList() {
+        singleView();
+        panelsHolder.getChildren().clear();
+        panelsHolder.getChildren().add(eventListPanel.getRoot());
     }
 
     /**
